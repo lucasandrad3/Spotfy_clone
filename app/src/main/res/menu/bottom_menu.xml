@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/nav_home"
+        android:title="Home"
+        android:icon="@drawable/ic_home"
+        />
+
+    <item
+        android:id="@+id/nav_search"
+        android:title="Pesquisar"
+        android:icon="@drawable/ic_search"
+        />
+    <item
+        android:id="@+id/nav_library"
+        android:title="Sua biblioteca"
+        android:icon="@drawable/ic_sort_24"
+        />
+</menu>
