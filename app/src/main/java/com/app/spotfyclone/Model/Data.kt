@@ -1,10 +1,19 @@
 package com.app.spotfyclone.Model
 
-class Category(
-    var title:String = ""
+import com.google.gson.annotations.SerializedName
+
+data class Category(
+    @SerializedName("titulo") var title:String = "",
+    @SerializedName("albuns") var albuns:List<Album> = arrayListOf()
 
 )
 
-class Album(
-    var img:Int = 0
+data class Album(
+    @SerializedName("url_imagem") var img:String = ""
+
+)
+
+data class Categorys(
+    @SerializedName("categoria")
+    val categorys: List<Category>
 )
