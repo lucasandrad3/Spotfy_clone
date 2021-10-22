@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/black"
+    android:orientation="vertical"
+    tools:context=".FragmentsTab.Artistas">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Seus artistas aparecerão\naqui"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_marginTop="250dp"
+        android:gravity="center"
+        android:layout_marginHorizontal="10dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/description_artistas"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="30dp"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Adicionar artist..."
+        android:layout_marginTop="30dp"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/white"
+        android:layout_marginHorizontal="50dp"
+        app:cornerRadius="32dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+
+        />
+
+</LinearLayout>

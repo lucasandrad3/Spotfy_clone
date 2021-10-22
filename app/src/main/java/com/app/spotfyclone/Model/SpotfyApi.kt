@@ -7,7 +7,7 @@ import retrofit2.http.GET
 
 interface SpotfyApi {
     @GET("pd.json.json?alt=media&token=34623b89-7a9b-4c67-8eb5-c13b25da2f9f")
-    fun ListCategorys():Call<Categorys>
+    fun ListCategorys():Call<Categorys> // REQUISIÇÃO COM A WEB E RETORNARÁ UM "Categorys"
 }
 
 fun retrofit():Retrofit = Retrofit.Builder()

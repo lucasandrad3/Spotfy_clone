@@ -20,6 +20,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val fragment_home = Home()
+        loadFragment(fragment_home)
+
         binding.bottomMenu.setOnItemSelectedListener{
             when(it.itemId){
                 R.id.nav_home->{
@@ -37,7 +40,6 @@ class MainActivity : AppCompatActivity() {
             }
             return@setOnItemSelectedListener true
         }
-
 
     }
 

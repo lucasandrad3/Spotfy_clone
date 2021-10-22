@@ -1,5 +1,6 @@
 package com.app.spotfyclone.Fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.app.spotfyclone.Details
 import com.app.spotfyclone.Model.*
 import com.app.spotfyclone.R
 import com.app.spotfyclone.databinding.FragmentHomeBinding
@@ -17,9 +19,6 @@ import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.create
-import java.util.*
-import kotlin.collections.ArrayList
 
 class Home : Fragment() {
     private lateinit var categoryAdapter:CategoryAdapter
@@ -47,7 +46,7 @@ class Home : Fragment() {
 
 
         retrofit().create(SpotfyApi::class.java)
-            .ListCategorys()
+            .ListCategorys()// REQUISIÇÃO COM A WEB E RETORNARÁ UM "Categorys"
             .enqueue(object :Callback<Categorys>{
                 override fun onResponse(call: Call<Categorys>, response: Response<Categorys>) {
                     if (response.isSuccessful){
@@ -86,7 +85,10 @@ class Home : Fragment() {
             itemView.findViewById<TextView>(R.id.text_title).text = category.title
 
         // como o recycleView estará dentro de outro recycle, fazemos a instancia aqui dentro
+
+
             album_adapter = albumAdapter(category.albuns)
+
             itemView.findViewById<RecyclerView>(R.id.recycle_album).adapter = album_adapter
             itemView.findViewById<RecyclerView>(R.id.recycle_album).layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         }
@@ -97,10 +99,19 @@ class Home : Fragment() {
         fun bind(album: Album){
             val id_img = itemView.findViewById<ImageView>(R.id.img_album)
             Picasso.get().load(album.img).placeholder(R.drawable.placeholder).fit().into(id_img)
+            id_img.setOnClickListener {// captura o clique em cada album
+                val intent = Intent(context, Details::class.java)
+                intent.putExtra("position", album.id) // nesse caso o id serve como um contador
+                intent.putExtra("album", album.img)
+                startActivity(intent)
+
+
+
+            }
         }
     }
 
-    private inner class albumAdapter(private val album:List<Album>): RecyclerView.Adapter<AlbumHolder>(){
+    private inner class albumAdapter(private val album: List<Album>): RecyclerView.Adapter<AlbumHolder>(){
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumHolder {
             return AlbumHolder(layoutInflater.inflate(R.layout.album_item, parent, false))
         }
